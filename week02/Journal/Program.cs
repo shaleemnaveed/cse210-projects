@@ -53,13 +53,13 @@ class Program
             }
             else if (choice == 3)
             {
-                Console.WriteLine("What is the filename? ");
+                Console.WriteLine("What is the filename (Use extension .json)?");
                 string file = Console.ReadLine();
                 journal.SaveToFile(file);
             }
             else if (choice == 4)
             {
-                Console.WriteLine("What is the filename? ");
+                Console.WriteLine("What is the filename (Use extension .json)?");
                 string file = Console.ReadLine();
                 journal.LoadFromFile(file);
             }

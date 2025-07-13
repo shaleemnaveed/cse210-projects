@@ -12,6 +12,6 @@ public class Entry
 
     public void Display()
     {
-        Console.WriteLine($"\nDate: {_date}\nPrompt: {_promptText}\n> {_entryText}");
+        Console.WriteLine($"\nDate: {_date}\nPrompt: {_promptText}\nResponse: {_entryText}");
     }
 }

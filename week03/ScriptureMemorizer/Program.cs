@@ -4,6 +4,30 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
+
+        ScriptureLibrary library = new ScriptureLibrary("scriptures.csv");
+        Scripture scripture = library.GetRandomScripture();
+
+        while (true)
+        {
+            Console.WriteLine(scripture.GetDisplayText());
+
+            Console.WriteLine("\nPress enter to continue or type 'quit' to finish");
+            string response = Console.ReadLine().ToLower();
+
+            if (response == "quit")
+            {
+                break;
+            }
+            else if (scripture.IsCompletelyHidden())
+            {
+                break;
+            }
+            else
+            {
+                scripture.HideRandomWords(3);
+                Console.Clear();
+            }
+        }
     }
 }

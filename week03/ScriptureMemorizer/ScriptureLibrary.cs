@@ -14,7 +14,7 @@ public class ScriptureLibrary
     }
 
     // Methods:
-    public void LoadScriptures(string file)
+    private void LoadScriptures(string file)
     {
         if(!File.Exists(file))
         {

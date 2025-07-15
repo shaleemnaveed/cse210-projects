@@ -1,3 +1,6 @@
+// To exceed requirements, I have the program to load scriptures from a csv file.
+// For this, I have created a new class ScriptureLibrary.
+
 using System;
 
 class Program

@@ -1,6 +1,5 @@
 public class ReflectingActivity : Activity
 {
-    // Attributes:
     private List<string> _prompts = new List<string>
     {
         "Think of a time when you stood up for someone else.",
@@ -8,6 +7,7 @@ public class ReflectingActivity : Activity
         "Think of a time when you helped someone in need.",
         "Think of a time when you did something truly selfless."
     };
+
     private List<string> _questions = new List<string>
     {
         "Why was this experience meaningful to you?",
@@ -20,31 +20,35 @@ public class ReflectingActivity : Activity
         "What did you learn about yourself through this experience?",
         "How can you keep this experience in mind in the future?"
     };
+
     private static PromptManager _promptManager;
     private static PromptManager _questionManager;
 
-    // Constructors:
-    public ReflectingActivity(string name, string description) : base(name, description)
-    {
-    }
+    // Constructor
+    public ReflectingActivity(string name, string description) : base(name, description) { }
 
-    // Methods:
+    // Run reflection activity
     public void Run()
     {
         Console.Clear();
         Console.WriteLine("Get Ready...");
         ShowSpinner(10);
+
         Console.WriteLine("Consider the following prompt:");
         DisplayPrompt();
+
         Console.WriteLine("When you have something in mind, press enter to continue.");
         Console.ReadLine();
-        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+
+        Console.WriteLine("Now ponder on each of the following questions as they relate to this experience.");
         Console.Write("You may begin in...");
         ShowCountDown(5);
         Console.Clear();
+
         DisplayQuestions();
     }
-    
+
+    // Fetch and return a unique prompt
     private string GetRandomPrompt()
     {
         if (_promptManager == null)
@@ -53,6 +57,8 @@ public class ReflectingActivity : Activity
         }
         return $" --- {_promptManager.GetNextUniquePrompt()} --- ";
     }
+
+    // Fetch and return a unique question
     private string GetRandomQuestion()
     {
         if (_questionManager == null)
@@ -61,14 +67,19 @@ public class ReflectingActivity : Activity
         }
         return $"> {_questionManager.GetNextUniquePrompt()} ";
     }
+
+    // Display a single random prompt
     private void DisplayPrompt()
     {
         Console.WriteLine(GetRandomPrompt());
     }
+
+    // Display questions for the duration of the activity
     private void DisplayQuestions()
     {
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(_duration);
+
         while (DateTime.Now < endTime)
         {
             Console.Write(GetRandomQuestion());

@@ -10,7 +10,7 @@ public class ListingActivity : Activity
         "When have you felt the Holy Ghost this month?",
         "Who are some of your personal heroes?"
     };
-
+    private static PromptManager _promptManager;
     // Constructors:
     public ListingActivity(string name, string description) : base(name, description)
     {
@@ -30,11 +30,13 @@ public class ListingActivity : Activity
         _count = items.Count;
         Console.WriteLine($"You listed {_count} items.");
     }
-    private Random random = new Random();
     private void GetRandomPrompt()
     {
-        int index = random.Next(_prompts.Count);
-        Console.WriteLine($" --- {_prompts[index]} --- ");
+        if (_promptManager == null)
+        {
+            _promptManager = new PromptManager(_prompts);
+        }
+        Console.WriteLine($" --- {_promptManager.GetNextUniquePrompt()} --- ");
     }
     private List<string> GetListFromUser()
     {
@@ -50,5 +52,4 @@ public class ListingActivity : Activity
         }
         return responses;
     }
-    
 }

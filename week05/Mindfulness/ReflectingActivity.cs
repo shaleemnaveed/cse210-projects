@@ -20,6 +20,8 @@ public class ReflectingActivity : Activity
         "What did you learn about yourself through this experience?",
         "How can you keep this experience in mind in the future?"
     };
+    private static PromptManager _promptManager;
+    private static PromptManager _questionManager;
 
     // Constructors:
     public ReflectingActivity(string name, string description) : base(name, description)
@@ -42,16 +44,22 @@ public class ReflectingActivity : Activity
         Console.Clear();
         DisplayQuestions();
     }
-    private static readonly Random random = new Random();
+    
     private string GetRandomPrompt()
     {
-        int index = random.Next(_prompts.Count);
-        return $" --- {_prompts[index]} --- ";
+        if (_promptManager == null)
+        {
+            _promptManager = new PromptManager(_prompts);
+        }
+        return $" --- {_promptManager.GetNextUniquePrompt()} --- ";
     }
     private string GetRandomQuestion()
     {
-        int index = random.Next(_questions.Count);
-        return $"> {_questions[index]} ";
+        if (_questionManager == null)
+        {
+            _questionManager = new PromptManager(_questions);
+        }
+        return $"> {_questionManager.GetNextUniquePrompt()} ";
     }
     private void DisplayPrompt()
     {

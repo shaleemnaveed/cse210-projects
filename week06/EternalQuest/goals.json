@@ -1,0 +1,9 @@
+{
+  "rank": 2,
+  "score": 1100,
+  "goals": [
+    "{\r\n  \u0022_isComplete\u0022: true,\r\n  \u0022_type\u0022: \u0022SimpleGoal\u0022,\r\n  \u0022_shortName\u0022: \u0022Give talk\u0022,\r\n  \u0022_description\u0022: \u0022Speak in sacrament\u0022,\r\n  \u0022_points\u0022: 200\r\n}",
+    "{\r\n  \u0022_amountCompleted\u0022: 3,\r\n  \u0022_target\u0022: 3,\r\n  \u0022_bonus\u0022: 500,\r\n  \u0022_type\u0022: \u0022ChecklistGoal\u0022,\r\n  \u0022_shortName\u0022: \u0022Attend temple\u0022,\r\n  \u0022_description\u0022: \u0022Attend and perform any ordinance\u0022,\r\n  \u0022_points\u0022: 100\r\n}",
+    "{\r\n  \u0022_type\u0022: \u0022EternalGoal\u0022,\r\n  \u0022_shortName\u0022: \u0022Study scriptures\u0022,\r\n  \u0022_description\u0022: \u0022Study for atleast 10 minutes\u0022,\r\n  \u0022_points\u0022: 100\r\n}"
+  ]
+}

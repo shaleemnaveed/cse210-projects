@@ -1,29 +1,27 @@
-// Class representing a checklist goal requiring multiple completions with a bonus
+using System.Text.Json.Serialization;
 public class ChecklistGoal : Goal
 {
-    // Tracks how many times the goal has been completed
-    public int _amountCompleted { get; set; }
+    // Attributes:
+    [JsonInclude]
+    private int _amountCompleted;
 
-    // Number of times the goal must be completed to earn bonus
-    public int _target { get; set; }
+    [JsonInclude]
+    private int _target;
 
-    // Bonus points awarded when target completions are met
-    public int _bonus { get; set; }
+    [JsonInclude]
+    private int _bonus;
 
-    // Default constructor calling base
+    // Constructors:
     public ChecklistGoal() : base()
     {
-
     }
-
-    // Parameterized constructor initializing base and checklist-specific fields
-    public ChecklistGoal(string type, string name, string description, int points, int target, int bonus) : base(type, name, description, points)
+    public ChecklistGoal(string name, string description, int points, int target, int bonus) : base(name, description, points)
     {
         _target = target;
         _bonus = bonus;
     }
 
-    // Records a completion event; increases count and returns points + bonus if complete
+    // Methods:
     public override int RecordEvent()
     {
         if (!IsComplete())
@@ -36,17 +34,12 @@ public class ChecklistGoal : Goal
             }
             return total;
         }
-        // Goal already complete, no points awarded
         return 0;
     }
-
-    // Checks if goal has reached or exceeded target completion count
     protected override bool IsComplete()
     {
         return _amountCompleted >= _target;
     }
-
-    // Returns formatted string showing progress and status
     public override string GetDetailsString()
     {
         char ch = IsComplete() ? 'X' : ' ';

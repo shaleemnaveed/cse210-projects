@@ -1,22 +1,19 @@
-// Class representing a simple one-time goal
+using System.Text.Json.Serialization;
 public class SimpleGoal : Goal
 {
-    // Indicates whether this simple goal has been completed
-    public bool _isComplete { get; set; } = false;
-
-    // Default constructor calling base
+    // Attributes:
+    [JsonInclude]
+    private bool _isComplete = false;
+    
+    // Constructors:
     public SimpleGoal() : base()
     {
-
     }
-
-    // Parameterized constructor passing data to base Goal class
-    public SimpleGoal(string type, string name, string description, int points) : base(type, name, description, points)
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
-
     }
 
-    // Marks the goal as complete and returns points (only once)
+    // Methods:
     public override int RecordEvent()
     {
         if (!_isComplete)
@@ -24,17 +21,12 @@ public class SimpleGoal : Goal
             _isComplete = true;
             return _points;
         }
-        // Already complete, no points
         return 0;
     }
-
-    // Returns completion status
     protected override bool IsComplete()
     {
         return _isComplete;
     }
-
-    // Returns formatted string showing status and goal info
     public override string GetDetailsString()
     {
         char ch = IsComplete() ? 'X' : ' ';

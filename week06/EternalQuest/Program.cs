@@ -3,13 +3,10 @@
 // Also replaced the required saving/loading method with json serialization/deserializtion.
  
 using System;
-
-// Main program entry point
 class Program
 {
     static void Main(string[] args)
     {
-        // Create a new GoalManager instance and start the app
         GoalManager goal = new GoalManager();
         goal.Start();
     }
